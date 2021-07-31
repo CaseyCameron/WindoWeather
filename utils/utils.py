@@ -13,8 +13,6 @@ LAT = os.getenv("LAT")
 LON = os.getenv("LON")
 url = f"https://api.weatherbit.io/v2.0/current?lat={LAT}&lon={LON}&key={API_KEY}&include=minutely"
 
-print(f'lat ' + LAT + ' lon ' + LON)
-
 def fetchOutsideTemp():
   response = requests.get(url)
   data = json.loads(response.text)

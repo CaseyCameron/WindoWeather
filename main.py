@@ -12,7 +12,6 @@ def main():
     while True:
         try:
             outsideTemp_c = fetchOutsideTemp()
-            print('outside celcius', outsideTemp_c)
             outsideTemp_f = convertTofahrenheit(outsideTemp_c)
             print('outside temp', outsideTemp_f)
 
@@ -36,6 +35,6 @@ def main():
             raise error
 
         # check temp every 3 minutes
-        time.sleep(180)
+        time.sleep(10)
 
 main()
