@@ -1,3 +1,4 @@
+from datetime import datetime
 from dotenv import load_dotenv
 import json
 import os
@@ -21,3 +22,21 @@ def fetchOutsideTemp():
 def convertTofahrenheit(temp_c):
   return (temp_c * (9 / 5)) + 32 
 
+def hasNotifiedToday(window_action):
+  # test to see if file exists
+  fname = Path(window_action)
+
+  if fname.exists():
+    return True
+  return False
+
+def notify(window_action):
+  print(f'Take action: {window_action}')
+  # create a file that serves as a flag
+  f = open(window_action, 'a')
+  f.write('')
+  f.close()
+    
+def cleanupFlag(flag):
+  if os.path.exists(flag):
+    os.remove(flag)

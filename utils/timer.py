@@ -1,3 +1,11 @@
+def timer(outside, inside):
+  if outside < inside:
+    print('It\'s now cooler outside. Open your windows.')
+  else:
+    print('')
+    # check the current time
+    # if current time = 7am 
+
 # set a var false
 # while var = false, check if outside temp is lower than inside temp. 
 # if outside temp is lower than inside temp, notify user
