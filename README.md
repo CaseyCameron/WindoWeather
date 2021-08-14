@@ -40,7 +40,7 @@
 * Setup two cron jobs as follows [(here's a cron timer helper)](https://crontab.guru/): 
   * First, run the cleanup in the morning. Set this for whenever you want to begin comparing temperatures in the AM. Mine is set to 7am.
     * Fill in the path to python, and the path to the app.
-      - 0 7 * * * /PATH_TO_/python /PATH_TO_WindoWeather/cleanup.py
+      - 0 7 * * * /PATH_TO_/python /PATH_TO_/WindoWeather/cleanup.py
   * Second, set a job to run the program every three minutes (or however often you choose - careful of api call limits)
       - */3 * * * * /PATH_TO_/python /PATH_TO_/WindoWeather/main.py > /tmp/cronjob.log 2>&1
 ----
