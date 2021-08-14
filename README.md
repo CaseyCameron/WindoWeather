@@ -42,7 +42,7 @@
     * Fill in the path to python, and the path to the app.
       - 0 7 * * * /PATH_TO_/python /PATH_TO_WindoWeather/cleanup.py
   * Second, set a job to run the program every three minutes (or however often you choose - careful of api call limits)
-      - */3 * * * * /PATH_TO_/python /PATH_TO_WindoWeather/main.py > /tmp/cronjob.log 2>&1
+      - */3 * * * * /PATH_TO_/python /PATH_TO_/WindoWeather/main.py > /tmp/cronjob.log 2>&1
 ----
 If you are unfamiliar with cron jobs please read a tutorial overview. When you want this program to stop running, you will need to remove these cron jobs.
 ----
