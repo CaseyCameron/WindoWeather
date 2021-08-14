@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import requests
+from twilio.rest import Client
 
 load_dotenv()
 env_path = Path('.')/'.env'
@@ -13,6 +14,13 @@ API_KEY = os.getenv("API_KEY")
 LAT = os.getenv("LAT")
 LON = os.getenv("LON")
 url = f"https://api.weatherbit.io/v2.0/current?lat={LAT}&lon={LON}&key={API_KEY}&include=minutely"
+
+ACCOUNT_SID = os.getenv("ACCOUNT_SID")
+AUTH_TOKEN = os.getenv("AUTH_TOKEN")
+FROM_ = os.getenv("FROM_")
+TO_ = os.getenv("TO_")
+
+client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
 def fetchOutsideTemp():
   response = requests.get(url)
@@ -30,8 +38,20 @@ def hasNotifiedToday(window_action):
     return True
   return False
 
+def action_type(window_action):
+  if window_action == '.open_window':
+    return 'open'
+  return 'close'
+
 def notify(window_action):
   print(f'Take action: {window_action}')
+
+  action = action_type(window_action)
+  message = client.messages.create(
+  to=TO_,
+  from_=FROM_,
+  body=f'It\'s time to {action} your windows.'
+)
   # create a file that serves as a flag
   f = open(window_action, 'a')
   f.write('')

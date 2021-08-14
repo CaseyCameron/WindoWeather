@@ -1,9 +1,7 @@
 import adafruit_dht
 import board
-from time import gmtime, strftime
 import os
 import sys
-import time
 from utils.utils import *
 
 dhtDevice = adafruit_dht.DHT22(board.D4)
@@ -40,13 +38,5 @@ def main():
 
     if insideTemp_f >= outsideTemp_f -temp_diff and not hasNotifiedToday('.close_window'):
         notify('.close_window')
-
-    
-    # if outside <= inside 
-    # print to console 'Time to open windows'
-    # pause loop until 7:00:00am
-    # restart, check if outside temp = inside (or perhaps 1 degree less)
-    # if equal, print to console 'time to close windows'
-    # back to if outside <= inside
 
 main()
