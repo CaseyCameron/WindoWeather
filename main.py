@@ -10,18 +10,18 @@ def main():
     temp_diff = 1 #close windows before outside temp is greater than this modifier
     
     # hit weatherbit.io api
-    outsideTemp_c = fetchOutsideTemp()
-    outsideTemp_f = convertTofahrenheit(outsideTemp_c)
-    print('outside temp', outsideTemp_f)
+    outside_temp_c = fetch_outside_temp()
+    outside_temp_f = convert_to_fahrenheit(outside_temp_c)
+    print('outside temp', outside_temp_f)
 
     try:
         # Print the values to the serial port
-        insideTemp_c = dhtDevice.temperature
-        insideTemp_f = convertTofahrenheit(insideTemp_c)
+        inside_temp_c = dhtDevice.temperature
+        inside_temp_f = convert_to_fahrenheit(inside_temp_c)
         humidity = dhtDevice.humidity
         print(
             "Inside Temp: {:.1f} F / {:.1f} C Humidity: {}% ".format(
-                outsideTemp_f, outsideTemp_c, humidity
+                outside_temp_f, outside_temp_c, humidity
             )
         )
 
@@ -33,10 +33,10 @@ def main():
         dhtDevice.exit()
         raise error
 
-    if insideTemp_f < outsideTemp_f and not hasNotifiedToday('.open_window'):
+    if inside_temp_f < outside_temp_f and not has_notified_today('.open_window'):
         notify('.open_window')
 
-    if insideTemp_f >= outsideTemp_f -temp_diff and not hasNotifiedToday('.close_window'):
+    if inside_temp_f >= outside_temp_f -temp_diff and not has_notified_today('.close_window'):
         notify('.close_window')
 
 main()

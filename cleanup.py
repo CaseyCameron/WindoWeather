@@ -1,4 +1,4 @@
 from utils.utils import *
 # to be run from cron job
-cleanupFlag('.open_window')
-cleanupFlag('.close_window')
+cleanup_flag('.open_window')
+cleanup_flag('.close_window')
